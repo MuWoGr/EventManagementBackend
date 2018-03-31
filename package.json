@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for Event Management App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuWoGr/EventManagementBackend.git"
+  },
+  "author": "Raymond Lochner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuWoGr/EventManagementBackend/issues"
+  },
+  "homepage": "https://github.com/MuWoGr/EventManagementBackend#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0"
+  }
+}
