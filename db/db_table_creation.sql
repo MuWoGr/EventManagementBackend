@@ -43,7 +43,59 @@ create table person (
   person_telephone text,
   person_email text,
   person_is_worker boolean, --NOT NULL
-  person_location_id integer
-)
+  person_location_id integer --FOREIGN KEY REFERENCES location(location_id)
+);
+
+create table person_skills (
+  person_id integer, --NOT NULL FOREIGN KEY REFERENCES person(person_id)
+  skill_id integer --NOT NULL FOREIGN KEY REFERENCES skill(skill_id)
+);
+
+create table event (
+  event_id serial, --PRIMARY KEY
+  event_name text, --NOT NULL
+  event_date_start timestamp,
+  event_date_end timestamp,
+  event_location_id integer,
+  event_charge numeric(14,2),
+  event_ppv_charge numeric(14,2),
+  event_live boolean,
+  event_special_notes text,
+  event_organizer integer, --FOREIGN KEY REFERENCES person(person_id)
+  event_fsk_check numeric(2),
+  event_billing_info text,
+  event_is_active boolean DEFAULT FALSE--NOT NULL
+);
+
+create table event_procedure (
+  event_id integer, --NOT NULL FOREIGN KEY REFERENCES event(event_id)
+  procedure_id integer --NOT NULL FOREIGN KEY REFERENCES procedure(procedure_id)
+);
+
+create table event_sport_type (
+  event_id integer, --NOT NULL FOREIGN KEY REFERENCES event(event_id)
+  sport_type_id integer --NOT NULL FOREIGN KEY REFERENCES sport_type(sport_type_id)
+);
+
+create table event_extern_person (
+  event_id integer, --NOT NULL FOREIGN KEY REFERENCES event(event_id)
+  person_id integer, --NOT NULL FOREIGN KEY REFERENCES person(person_id)
+  extern_role text
+);
+
+create table event_disponibility (
+  event_id integer, --NOT NULL FOREIGN KEY REFERENCES event(event_id)
+  person_id integer, --NOT NULL FOREIGN KEY REFERENCES person(person_id)
+  disponibility_id smallint --NOT NULL FOREIGN KEY REFERENCES disponibility(disponibility_id)
+);
+
+create table event_function (
+  event_id integer, --NOT NULL FOREIGN KEY REFERENCES event(event_id)
+  person_id integer, --NOT NULL FOREIGN KEY REFERENCES person(person_id)
+  skill_id integer, --NOT NULL FOREIGN KEY REFERENCES skill(skill_id)
+  event_function_description text,
+  person_performance_grade numeric(1),
+  person_performance_info text
+);
 
 commit;
