@@ -57,12 +57,12 @@ create table event (
   event_date_start timestamp,
   event_date_end timestamp,
   event_location_id integer,
-  event_charge numeric(14,2),
-  event_ppv_charge numeric(14,2),
-  event_live boolean,
+  event_charge numeric(14,2) DEFAULT 0, --NOT NULL
+  event_ppv_charge numeric(14,2) DEFAULT 0, --NOT NULL
+  event_live boolean DEFAULT FALSE, --NOT NULL
   event_special_notes text,
   event_organizer integer, --FOREIGN KEY REFERENCES person(person_id)
-  event_fsk_check numeric(2),
+  event_fsk_check numeric(2) DEFAULT 18, --NOT NULL
   event_billing_info text,
   event_is_active boolean DEFAULT FALSE--NOT NULL
 );
